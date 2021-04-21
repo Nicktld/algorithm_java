@@ -78,7 +78,7 @@
 
     <Loggers>
 
-        <Logger name="com.BFS.Dummy1" additivity="false" level="debug">
+        <Logger name="com.bfs.Dummy1" additivity="false" level="debug">
             <AppenderRef ref="debugLog" />
             <AppenderRef ref="infoLog"  />
             <AppenderRef ref="errorLog" />
