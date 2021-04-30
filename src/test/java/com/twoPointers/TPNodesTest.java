@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 public class TPNodesTest {
 
@@ -28,20 +29,15 @@ public class TPNodesTest {
         Integer[] arr1 = new Integer[]{1, 1, 1, 2, 2, 4, 5, 5, 6, 6, 7};
         Integer[] arr2 = new Integer[]{1, 2, 2, 2, 4, 4, 5, 5, 6, 6, 7};
         Integer[] arr3 = new Integer[]{1, 1, 1, 2, 2, 4, 5, 6, 7, 7, 7};
-        Integer[] expected = new Integer[]{1, 2, 4, 5, 6, 7};
-        ListNode<Integer> nodes1 = tpNodes.deleteDuplicates(ListNodeUtils.makeSinglyLinkedNodes(arr1));
-        ListNode<Integer> nodes2 = tpNodes.deleteDuplicates(ListNodeUtils.makeSinglyLinkedNodes(arr2));
-        ListNode<Integer> nodes3 = tpNodes.deleteDuplicates(ListNodeUtils.makeSinglyLinkedNodes(arr3));
-        ListNode<Integer> expectedNodes = tpNodes.deleteDuplicates(ListNodeUtils.makeSinglyLinkedNodes(expected));
+        Integer[] arr4 = new Integer[]{1, 2, 4, 5, 6, 7};
+        ListNode<Integer> nodes1 = tpNodes.deleteDuplicates(ListNodeUtils.makeSinglyListNodes(arr1));
+        ListNode<Integer> nodes2 = tpNodes.deleteDuplicates(ListNodeUtils.makeSinglyListNodes(arr2));
+        ListNode<Integer> nodes3 = tpNodes.deleteDuplicates(ListNodeUtils.makeSinglyListNodes(arr3));
+        ListNode<Integer> expect = tpNodes.deleteDuplicates(ListNodeUtils.makeSinglyListNodes(arr4));
 
         ListNode[] inputs = new ListNode[] {nodes1, nodes2, nodes3};
-        for(ListNode node : inputs) {
-            ListNode<Integer> cur = expectedNodes;
-            while(node != null && cur != null) {
-                assertEquals(node.val, cur.val);
-                node = node.next;
-                cur = cur.next;
-            }
+        for(ListNode actual : inputs) {
+            compareListNodes(expect, actual);
         }
     }
 
@@ -50,56 +46,78 @@ public class TPNodesTest {
         Integer[] arr1 = new Integer[]{1, 1, 2, 2, 4, 4, 5, 5, 6, 6, 7};
         Integer[] arr2 = new Integer[]{1, 1, 2, 2, 2, 4, 4, 4, 6, 6, 7};
         Integer[] arr3 = new Integer[]{1, 1, 1, 2, 2, 5, 5, 6, 6, 6, 7};
-        Integer[] expected = new Integer[]{7};
-        ListNode<Integer> nodes1 = tpNodes.deleteDuplicatesII(ListNodeUtils.makeSinglyLinkedNodes(arr1));
-        ListNode<Integer> nodes2 = tpNodes.deleteDuplicatesII(ListNodeUtils.makeSinglyLinkedNodes(arr2));
-        ListNode<Integer> nodes3 = tpNodes.deleteDuplicatesII(ListNodeUtils.makeSinglyLinkedNodes(arr3));
-        ListNode<Integer> expectedNodes = tpNodes.deleteDuplicatesII(ListNodeUtils.makeSinglyLinkedNodes(expected));
+        Integer[] arr4 = new Integer[]{7};
+        ListNode<Integer> nodes1 = tpNodes.deleteDuplicatesII(ListNodeUtils.makeSinglyListNodes(arr1));
+        ListNode<Integer> nodes2 = tpNodes.deleteDuplicatesII(ListNodeUtils.makeSinglyListNodes(arr2));
+        ListNode<Integer> nodes3 = tpNodes.deleteDuplicatesII(ListNodeUtils.makeSinglyListNodes(arr3));
+        ListNode<Integer> expect = tpNodes.deleteDuplicatesII(ListNodeUtils.makeSinglyListNodes(arr4));
 
         ListNode[] inputs = new ListNode[] {nodes1, nodes2, nodes3};
-        for(ListNode node : inputs) {
-            ListNode<Integer> cur = expectedNodes;
-            while(node != null && cur != null) {
-                assertEquals(node.val, cur.val);
-                node = node.next;
-                cur = cur.next;
-            }
+        for(ListNode actual : inputs) {
+            compareListNodes(expect, actual);
         }
     }
 
+    @Test
+    public void sortListNodeSuccess() {
+        Integer[] arr1 = new Integer[]{1, 2, 6, 5, 4, 3};
+        Integer[] arr2 = new Integer[]{1, 2, 3, 4, 5, 6};
+        ListNode<Integer> actual = tpNodes.sortListNode(ListNodeUtils.makeSinglyListNodes(arr1));
+        ListNode<Integer> expect = ListNodeUtils.makeSinglyListNodes(arr2);
+
+        compareListNodes(expect, actual);
+    }
+
+    /*
+    ListNodeUtils :: getMidNode
+     */
     @Test
     public void getMidNodeSuccess() {
         Integer[] arr1 = new Integer[]{1, 1, 2, 2,  5, 5, 6, 6, 7};
-        Integer[] expected = new Integer[]{5, 5, 6, 6, 7};
-        ListNode<Integer> nodes1 = ListNodeUtils.getMidNode(ListNodeUtils.makeSinglyLinkedNodes(arr1));
-        ListNode<Integer> expectedNodes = ListNodeUtils.makeSinglyLinkedNodes(expected);
+        Integer[] arr2 = new Integer[]{5, 5, 6, 6, 7};
+        ListNode<Integer> actual = ListNodeUtils.getMidNode(ListNodeUtils.makeSinglyListNodes(arr1));
+        ListNode<Integer> expect = ListNodeUtils.makeSinglyListNodes(arr2);
 
-        ListNode[] inputs = new ListNode[] {nodes1};
-        for(ListNode node : inputs) {
-            ListNode<Integer> cur = expectedNodes;
-            while(node != null && cur != null) {
-                assertEquals(node.val, cur.val);
-                node = node.next;
-                cur = cur.next;
-            }
-        }
+        compareListNodes(expect, actual);
     }
 
+    /*
+    ListNodeUtils :: reverseSinglyListNodes
+     */
     @Test
-    public void reverseSinglyLinkedNodesSuccess() {
+    public void reverseSinglyListNodesSuccess() {
         Integer[] arr1 = new Integer[]{1, 1, 2, 2,  5, 5, 6, 6, 7};
-        Integer[] expected = new Integer[]{7, 6, 6, 5, 5, 2, 2, 1, 1};
-        ListNode<Integer> nodes1 = ListNodeUtils.reverseSinglyLinkedNodes(ListNodeUtils.makeSinglyLinkedNodes(arr1));
-        ListNode<Integer> expectedNodes = ListNodeUtils.makeSinglyLinkedNodes(expected);
+        Integer[] arr2 = new Integer[]{7, 6, 6, 5, 5, 2, 2, 1, 1};
+        ListNode<Integer> actual = ListNodeUtils.reverseSinglyListNodes(ListNodeUtils.makeSinglyListNodes(arr1));
+        ListNode<Integer> expect = ListNodeUtils.makeSinglyListNodes(arr2);
 
-        ListNode[] inputs = new ListNode[] {nodes1};
-        for(ListNode node : inputs) {
-            ListNode<Integer> cur = expectedNodes;
-            while(node != null && cur != null) {
-                assertEquals(node.val, cur.val);
-                node = node.next;
-                cur = cur.next;
-            }
+        compareListNodes(expect, actual);
+    }
+
+    /*
+    ListNodeUtils :: mergeTwoListNodes
+     */
+    @Test
+    public void mergeTwoListNodesSuccess() {
+        Integer[] arr1 = new Integer[]{1, 2, 4, 5, 7};
+        Integer[] arr2 = new Integer[]{3, 6, 8};
+        Integer[] arr3 = new Integer[]{1, 2, 3, 4, 5, 6, 7, 8};
+        ListNode<Integer> node1 = ListNodeUtils.makeSinglyListNodes(arr1);
+        ListNode<Integer> node2 = ListNodeUtils.makeSinglyListNodes(arr2);
+
+        ListNode<Integer> actual = ListNodeUtils.mergeTwoListNodes(node1, node2, (a, b) -> a.val > b.val);
+        ListNode<Integer> expect = ListNodeUtils.makeSinglyListNodes(arr3);
+
+        compareListNodes(expect, actual);
+    }
+
+    private void compareListNodes(ListNode expect, ListNode actual) {
+        while(expect!= null && actual != null) {
+            assertEquals(expect.val, actual.val);
+            expect = expect.next;
+            actual = actual.next;
         }
+        assertNull(expect);
+        assertNull(actual);
     }
 }
