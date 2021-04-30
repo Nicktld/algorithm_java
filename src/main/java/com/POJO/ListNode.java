@@ -8,7 +8,7 @@ public class ListNode<V> {
     public ListNode(V val) {
         this.val = val;
     }
-    public ListNode(V val, ListNode next) {
+    public ListNode(V val, ListNode<V> next) {
         this.val = val;
         this.next = next;
     }
