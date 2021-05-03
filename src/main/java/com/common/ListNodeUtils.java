@@ -76,4 +76,15 @@ public class ListNodeUtils {
         curr.next = (node1 == null) ? node2 : node1;
         return DUMMY.next;
     }
+
+    /* 141. Linked List Cycle */
+    public static <V> boolean hasCycle(ListNode<V> listnode) {
+        ListNode<V> slow = listnode, fast = listnode;
+        while(fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if(slow == fast) return true;
+        }
+        return false;
+    }
 }

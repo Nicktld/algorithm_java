@@ -56,6 +56,7 @@ public class TPNodes {
         ListNode<V> second = tailNode.next;
         tailNode.next = null;
 
+        // NlogN
         ListNode<V> node1 = sortListNode(listNode);
         ListNode<V> node2 = sortListNode(second);
 
