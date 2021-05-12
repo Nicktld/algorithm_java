@@ -1,14 +1,14 @@
 package com.POJO;
 
-public class ListNode<V> {
-    public V val;
-    public ListNode<V> next;
+public class ListNode<E> {
+    public E val;
+    public ListNode<E> next;
 
     public ListNode() {};
-    public ListNode(V val) {
+    public ListNode(E val) {
         this.val = val;
     }
-    public ListNode(V val, ListNode<V> next) {
+    public ListNode(E val, ListNode<E> next) {
         this.val = val;
         this.next = next;
     }

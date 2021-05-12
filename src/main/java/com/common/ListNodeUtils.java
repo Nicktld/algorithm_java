@@ -1,7 +1,6 @@
 package com.common;
 
 import com.POJO.ListNode;
-import java.util.List;
 import java.util.function.BiFunction;
 
 public class ListNodeUtils {
