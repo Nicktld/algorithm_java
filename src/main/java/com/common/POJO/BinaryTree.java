@@ -1,5 +1,9 @@
-package com.POJO;
+package com.common.POJO;
 
+/*
+* BinaryTree<E> : Defines a BinaryTree
+* E : The value type [String, Integer, Boolean]
+* */
 public class BinaryTree<E> {
     public BinaryTree<E> left, right;
     public E val;

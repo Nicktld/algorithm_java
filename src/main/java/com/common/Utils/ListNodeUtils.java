@@ -1,6 +1,6 @@
-package com.common;
+package com.common.Utils;
 
-import com.POJO.ListNode;
+import com.common.POJO.ListNode;
 import java.util.function.BiFunction;
 
 public class ListNodeUtils {
@@ -20,6 +20,17 @@ public class ListNodeUtils {
         return DUMMY.next;
     }
 
+    public static boolean compareListNodes(ListNode node1, ListNode node2) {
+        while(node1 != null && node2 != null) {
+            if(node1.val != node2.val) {
+                return false;
+            }
+            node1 = node1.next;
+            node2 = node2.next;
+        }
+        return true;
+    }
+
     /* 876. Middle of the Linked List */
     public static <V> ListNode<V> getMidNode(ListNode<V> node) {
         ListNode<V> slow = node, fast = node;
@@ -30,14 +41,14 @@ public class ListNodeUtils {
         return slow;
     }
 
-    public static <V> ListNode<V> getMidNode(ListNode<V> node, Boolean isCutOff) {
+    public static <V> ListNode<V> getPreMidNode(ListNode<V> node) {
         ListNode<V> prev = null, slow = node, fast = node;
         while(fast != null && fast.next != null) {
-            if(isCutOff) prev = slow;
+            prev = slow;
             slow = slow.next;
             fast = fast.next.next;
         }
-        return isCutOff ? prev : slow;
+        return prev;
     }
 
     /* 206. Reverse Linked List */

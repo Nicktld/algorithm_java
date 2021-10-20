@@ -1,12 +1,11 @@
 package com.twoPointers;
 
 
-import com.POJO.ListNode;
-import com.common.ListNodeUtils;
+import com.common.POJO.ListNode;
+import com.common.Utils.ListNodeUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.List;
 import java.util.function.BiFunction;
 
 public class TPNodes {
@@ -52,7 +51,7 @@ public class TPNodes {
         if(listNode == null || listNode.next == null) {
             return listNode;
         }
-        ListNode<V> tailNode = ListNodeUtils.getMidNode(listNode, true);
+        ListNode<V> tailNode = ListNodeUtils.getPreMidNode(listNode);
         ListNode<V> second = tailNode.next;
         tailNode.next = null;
 

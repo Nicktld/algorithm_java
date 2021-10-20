@@ -1,7 +1,6 @@
-package com.common;
+package com.common.Utils;
 
-import com.POJO.BinaryTree;
-import com.twoPointers.TPNodes;
+import com.common.POJO.BinaryTree;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
